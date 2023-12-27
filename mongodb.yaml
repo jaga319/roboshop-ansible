@@ -13,8 +13,8 @@
     - name: enable and starting mongodb
       ansible.builtin.service:
         name: mongod
-        enable: yes
         state: started
+        enabled: yes
     - name: replace the hostname
       ansible.builtin.replace:
         path: /etc/mongod.conf
