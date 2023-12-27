@@ -45,7 +45,7 @@
         state: present
     - name: get the products count
       ansible.builtin.command: mongo --host mongodb.infome.website  < /app/schema/catalogue.js --quiet --eval 'db=db.getSiblingDB("catalogue");db.products.count()'
-      register: product-count
+      register: product_count
     - name: load DB schema
       ansible.builtin.command: mongo --host mongodb.infome.website </app/schema/catalogue.js
       when: product_count.stdout == 0
