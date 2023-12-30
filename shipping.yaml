@@ -2,7 +2,6 @@
   hosts: shipping
   become: yes
   tasks: 
-
   - name: install maven
     ansible.builtin.package:
       name: maven
@@ -42,7 +41,7 @@
     ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
     args:
         chdir: /app
-        
+
   - name: copying content of shippinng service
     ansible.shipping.copy:
       src: shipping.service
@@ -61,7 +60,7 @@
   - name: data load cities
     ansible.builtin.shell: "mysql -h mysql.infome.website -uroot -pRoboShop@1 < /app/schema/shipping.sql"
     when: schema.stdout != "1"
- - name: enable and starting shipping
+  - name: enable and starting shipping
       ansible.builtin.service:
         name: shipping
         state: restarted
